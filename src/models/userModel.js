@@ -1,0 +1,68 @@
+const {Schema,model}=require("mongoose")
+const ObjectId=mongoose.Schema.Types.ObjectId
+
+const userSchema=new Schema({
+    fName:{
+        type:String,
+        required:true
+    },
+    lName:{
+        type:String,
+        required:true
+    },
+    phoneNumber:{
+        type:String,
+        required:true,
+        unique:true
+    },
+    age:{
+        type:Number,
+        required:true,
+    },
+    pincode:{
+        type:String,
+        required:true
+    },
+    adhaarNo:{
+        type:String,
+        required:true,
+        unique:true 
+    },
+    password:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    status:{
+        firstDose:{
+            type:Boolean,
+            default:false
+        },
+        secondDose:{
+            type:Boolean,
+            default:false  
+        }
+    },
+    centre:{
+        type:ObjectId,
+        ref:"Centre",
+        trim:true
+    },
+    registeredSlot:{
+        registered:{
+            type:Boolean,
+            default:false
+        },
+        date:{
+            type:Date
+        },
+        time:{
+            type:Number
+        }
+    }
+},
+{
+    timestamps:true
+})
+
+module.exports=model("User",userSchema)
