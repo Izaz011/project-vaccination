@@ -65,7 +65,7 @@ const createUser=async function(req,res){
 
     const userDetails=await create(data)
 
-    return rmSync.status(201).send({status:true,msg:"user created successfully",data:userDetails})
+    return res.status(201).send({status:true,msg:"user created successfully",data:userDetails})
 }
 
 
